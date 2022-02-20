@@ -1,0 +1,9 @@
+{
+  "app": "node dist/bin/top-talent-community",
+  "context": {
+    "test": {
+      "Environment": "test",
+      "Parameters": {}
+    }
+  }
+}
