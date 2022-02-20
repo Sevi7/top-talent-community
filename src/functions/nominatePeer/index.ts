@@ -3,4 +3,4 @@ import { NominatePeerController } from './NominatePeerController';
 
 export const lambdaHandler = async (
   event: APIGatewayProxyEventV2
-): Promise<APIGatewayProxyResultV2> => new NominatePeerController().runImplementation(event);
+): Promise<APIGatewayProxyResultV2> => new NominatePeerController().run(event);

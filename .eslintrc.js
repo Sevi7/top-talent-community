@@ -31,5 +31,14 @@ module.exports = {
     'class-methods-use-this': 0,
     'no-console': 'off',
     'import/extensions': 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        'packageDir': [
+          './',
+          './src/layer/nodejs',
+        ]
+      }
+    ],
   }
 };

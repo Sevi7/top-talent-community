@@ -3,7 +3,9 @@
   "context": {
     "test": {
       "Environment": "test",
-      "Parameters": {}
+      "Parameters": {
+        "JWT_TOKEN_KEY": "&E)H+MbQeThWmZq4t7w!z%C*F-JaNdRf"
+      }
     }
   }
 }

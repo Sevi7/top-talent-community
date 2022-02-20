@@ -6,7 +6,9 @@ export default function getConfig(app: App, env: string): BuildConfig {
 
   const buildConfig: BuildConfig = {
     Environment: unparsedEnv.Environment,
-    Parameters: {},
+    Parameters: {
+      JWT_TOKEN_KEY: unparsedEnv.Parameters.JWT_TOKEN_KEY,
+    },
   };
 
   return buildConfig;

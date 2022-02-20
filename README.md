@@ -9,6 +9,7 @@ An API for top talent community members to nominate their peers.
 - Install AWS SAM CLI (for testing locally)
   - Creating an AWS Account is not needed, you can go directly to the last steps.
   - https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
+- Install dependencies in root folder and in `src/layer/nodejs` folder.
 
 ### Testing Locally
 - Compile TypeScript files
@@ -20,9 +21,9 @@ An API for top talent community members to nominate their peers.
   npm run cdk:synth
   ```
 - Use AWS SAM CLI for testing locally the resources of the CloudFormation template generated.
-  - To invoke the lambda function locally:
+  - To invoke the lambda function locally (you can use a different event by replacing the file path after `-e`):
     ```
-    sam local invoke nominatePeer | jq
+    sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerValid.json | jq
     ```
 
 ### Deployment in AWS (not needed)

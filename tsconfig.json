@@ -31,6 +31,13 @@
       "/opt/*": [
         "src/layer/*",
       ],
+      "joi": [
+        "src/layer/nodejs/node_modules/joi"
+      ],
+      "uuid": [
+        "src/layer/nodejs/node_modules/@types/uuid",
+        "src/layer/nodejs/node_modules/uuid"
+      ]
     },
   },
   "exclude": [

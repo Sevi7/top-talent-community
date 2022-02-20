@@ -9,6 +9,7 @@
     "start": "echo \"This is a serverless application!\" && exit 0",
     "test": "jest --config tests/jest.config.ts",
     "prebuild": "rimraf dist",
+    "postbuild": "cp -R src/layer/nodejs/node_modules dist/src/layer/nodejs/node_modules",
     "build": "tsc",
     "watch": "tsc -w --preserveWatchOutput",
     "cdk": "cdk",
@@ -18,8 +19,8 @@
   "author": "Adrian",
   "license": "ISC",
   "dependencies": {
-    "@aws-cdk/core": "~1.145.0",
-    "@aws-cdk/aws-lambda": "~1.145.0"
+    "@aws-cdk/aws-lambda": "~1.145.0",
+    "@aws-cdk/core": "~1.145.0"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.92",

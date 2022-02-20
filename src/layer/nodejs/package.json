@@ -1,0 +1,21 @@
+{
+  "name": "layer",
+  "description": "Layer with shared common code and dependencies between Lambda Functions",
+  "version": "1.0.0",
+  "main": "index.js",
+  "engines": {
+    "node": ">=v14.18.1"
+  },
+  "author": "Adrian",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "~2.1077.0",
+    "joi": "^17.6.0",
+    "jwt-simple": "^0.5.6",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/jwt-simple": "^0.5.33",
+    "@types/uuid": "^8.3.4"
+  }
+}

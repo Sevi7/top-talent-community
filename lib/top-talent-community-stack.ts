@@ -18,7 +18,9 @@ export default class TopTalentCommunityStack extends Stack {
       layers: [layer],
       code: Code.fromAsset('dist/src/functions/nominatePeer'),
       timeout: Duration.seconds(15),
-      environment: {},
+      environment: {
+        JWT_TOKEN_KEY: buildConfig.Parameters.JWT_TOKEN_KEY,
+      },
     });
   }
 }

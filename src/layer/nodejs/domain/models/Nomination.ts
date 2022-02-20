@@ -1,6 +1,7 @@
 import { Member } from './Member';
 
 interface NominationConstructorParams {
+  id: string;
   email: string;
   description: string;
   communityInvolvementScore: number;
@@ -9,6 +10,8 @@ interface NominationConstructorParams {
 }
 
 export class Nomination {
+  private _id: string;
+
   private _email: string;
 
   private _description: string;
@@ -20,11 +23,16 @@ export class Nomination {
   private _referringMember: Member;
 
   constructor(params: NominationConstructorParams) {
+    this._id = params.id;
     this._email = params.email;
     this._description = params.description;
     this._communityInvolvementScore = params.communityInvolvementScore;
     this._overallScore = params.overallScore;
     this._referringMember = params.referringMember;
+  }
+
+  get id() {
+    return this._id;
   }
 
   get email() {
