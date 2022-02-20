@@ -97,7 +97,7 @@ export class Member {
     return this._state;
   }
 
-  set state(state: string) {
+  set state(state: string | undefined) {
     this._state = state;
   }
 

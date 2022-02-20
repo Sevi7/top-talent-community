@@ -30,5 +30,6 @@ module.exports = {
     'no-multi-spaces': 2,
     'class-methods-use-this': 0,
     'no-console': 'off',
+    'import/extensions': 'off',
   }
 };

@@ -10,7 +10,6 @@
     "test": "jest --config tests/jest.config.ts",
     "prebuild": "rimraf dist",
     "build": "tsc",
-    "postbuild": "cp -R src/node_modules dist/src/node_modules",
     "watch": "tsc -w --preserveWatchOutput",
     "cdk": "cdk",
     "cdk:synth": "cdk synth --no-staging > template.yaml",
@@ -19,9 +18,11 @@
   "author": "Adrian",
   "license": "ISC",
   "dependencies": {
-    "@aws-cdk/core": "~1.145.0"
+    "@aws-cdk/core": "~1.145.0",
+    "@aws-cdk/aws-lambda": "~1.145.0"
   },
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.92",
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.18",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
