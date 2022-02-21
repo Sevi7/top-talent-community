@@ -1,0 +1,25 @@
+{
+  "Destination": {
+    "ToAddresses": [
+      "john@doe.com",
+      "paul@mckena.com"
+    ]
+  },
+  "Message": {
+    "Body": {
+      "Html": {
+        "Charset": "UTF-8",
+        "Data": "Thank you for your nomination to paul@mckena.com to the Top Talent Community.<br><br>We have made the decision to not move your nomination forward at this time. But we are sure you will be able to join in the future!<br><br>Best,<br><br>Top Talent Community"
+      },
+      "Text": {
+        "Charset": "UTF-8",
+        "Data": "Thank you for your nomination to paul@mckena.com to the Top Talent Community.\nWe have made the decision to not move your nomination forward at this time. But we are sure you will be able to join in the future!\nBest,\nTop Talent Community"
+      }
+    },
+    "Subject": {
+      "Charset": "UTF-8",
+      "Data": "Nomination to the Top Talent Community"
+    }
+  },
+  "Source": "nominations@top.talent.comunity"
+}

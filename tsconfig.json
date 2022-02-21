@@ -29,7 +29,7 @@
     "baseUrl": ".",
     "paths": {
       "/opt/*": [
-        "src/layer/*",
+        "src/layer/*"
       ],
       "joi": [
         "src/layer/nodejs/node_modules/joi"
@@ -38,11 +38,11 @@
         "src/layer/nodejs/node_modules/@types/uuid",
         "src/layer/nodejs/node_modules/uuid"
       ]
-    },
+    }
   },
   "exclude": [
     "cdk.out",
-    "dist/**/*",
+    "dist/**/*"
   ],
   "include": [
     "./",

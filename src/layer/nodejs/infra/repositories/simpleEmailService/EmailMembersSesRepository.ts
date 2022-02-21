@@ -28,7 +28,7 @@ export class EmailMembersSesRepository implements EmailMembersRepository {
           },
           Text: {
             Charset: 'UTF-8',
-            Data: `Thank you for your nomination to ${nominatedMemberEmail} to the Top Talent Community. \n We have made the decision to not move your nomination forward at this time. But we are sure you will be able to join in the future!\nBest,\nTop Talent Community`,
+            Data: `Thank you for your nomination to ${nominatedMemberEmail} to the Top Talent Community.\nWe have made the decision to not move your nomination forward at this time. But we are sure you will be able to join in the future!\nBest,\nTop Talent Community`,
           },
         },
         Subject: {
