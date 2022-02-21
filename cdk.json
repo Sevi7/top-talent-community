@@ -4,7 +4,9 @@
     "test": {
       "Environment": "test",
       "Parameters": {
-        "JWT_TOKEN_KEY": "&E)H+MbQeThWmZq4t7w!z%C*F-JaNdRf"
+        "JWT_TOKEN_KEY": "&E)H+MbQeThWmZq4t7w!z%C*F-JaNdRf",
+        "DYNAMO_TABLE_NAME_MEMBERS": "Members",
+        "DYNAMO_TABLE_NAME_NOMINATIONS": "Nominations"
       }
     }
   }

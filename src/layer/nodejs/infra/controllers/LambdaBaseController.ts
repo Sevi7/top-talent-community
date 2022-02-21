@@ -1,6 +1,7 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyResultV2 } from 'aws-lambda';
 import { GeneralError } from '../../shared/errors/GeneralError';
 import { JwtTokenError } from '../../shared/errors/JwtTokenError';
+import { DynamoDbError } from '../../shared/errors/DynamoDbError';
 
 export abstract class LambdaBaseController {
   protected abstract runImplementation(
@@ -13,6 +14,10 @@ export abstract class LambdaBaseController {
     } catch (error: unknown) {
       if (error instanceof JwtTokenError) {
         return this.unauthorized();
+      }
+      if (error instanceof DynamoDbError) {
+        console.error('FATAL DynamoDb Error', error);
+        return this.fail();
       }
       if (error instanceof GeneralError) {
         return this.generalError(error.message);

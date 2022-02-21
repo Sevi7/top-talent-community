@@ -8,6 +8,8 @@ export default function getConfig(app: App, env: string): BuildConfig {
     Environment: unparsedEnv.Environment,
     Parameters: {
       JWT_TOKEN_KEY: unparsedEnv.Parameters.JWT_TOKEN_KEY,
+      DYNAMO_TABLE_NAME_MEMBERS: unparsedEnv.Parameters.DYNAMO_TABLE_NAME_MEMBERS,
+      DYNAMO_TABLE_NAME_NOMINATIONS: unparsedEnv.Parameters.DYNAMO_TABLE_NAME_NOMINATIONS,
     },
   };
 

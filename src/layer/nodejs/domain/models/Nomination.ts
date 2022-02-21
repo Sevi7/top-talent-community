@@ -58,4 +58,15 @@ export class Nomination {
   get referringMember() {
     return this._referringMember;
   }
+
+  toJson() {
+    return {
+      id: this._id,
+      email: this._email,
+      description: this._description,
+      communityInvolvementScore: this._communityInvolvementScore,
+      overallScore: this._overallScore,
+      referringMember: this._referringMember.toJson(),
+    };
+  }
 }

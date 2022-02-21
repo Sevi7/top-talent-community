@@ -108,4 +108,19 @@ export class Member {
   set country(country: string) {
     this._country = country;
   }
+
+  toJson() {
+    return {
+      id: this._id,
+      name: this._name,
+      lastName: this._lastName,
+      birthDate: this._birthDate,
+      email: this._email,
+      phoneNumber: this._phoneNumber,
+      postalCode: this._postalCode,
+      city: this._city,
+      state: this._state,
+      country: this._country,
+    };
+  }
 }

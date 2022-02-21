@@ -12,6 +12,10 @@ An API for top talent community members to nominate their peers.
 - Install dependencies in root folder and in `src/layer/nodejs` folder.
 
 ### Testing Locally
+- Run the following command to create a docker network, run a local dynamodb container in it, create the DynamoDB tables and add some items:
+  ```
+  sh initialize-docker-dynamodb.sh
+  ```
 - Compile TypeScript files
   ```
   npm run build
@@ -23,8 +27,14 @@ An API for top talent community members to nominate their peers.
 - Use AWS SAM CLI for testing locally the resources of the CloudFormation template generated.
   - To invoke the lambda function locally (you can use a different event by replacing the file path after `-e`):
     ```
-    sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerValid.json | jq
+    sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerValid.json --docker-network top-talent-community-network | jq
     ```
+  - To debug the lambda function locally:
+    - Run the following command:
+      ```
+      sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerValid.json  --debug-port 5858 --docker-network top-talent-community-network
+      ```
+    - Go to VSCode section __Run and Debug__ and select `Attach to SAM nominatePeer`
 
 ### Deployment in AWS (not needed)
   - The first time you need to bootstrap your AWS environment
