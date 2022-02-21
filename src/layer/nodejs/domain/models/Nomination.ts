@@ -59,6 +59,10 @@ export class Nomination {
     return this._referringMember;
   }
 
+  isRejected(): boolean {
+    return this._overallScore < 8;
+  }
+
   toJson() {
     return {
       id: this._id,

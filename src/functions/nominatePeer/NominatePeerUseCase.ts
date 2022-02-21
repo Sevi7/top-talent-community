@@ -5,11 +5,13 @@ import { AlreadyExistsError } from '/opt/nodejs/shared/errors/AlreadyExistsError
 import { NominatePeerDto } from './NominatePeerDto';
 import { NominationRepository } from '/opt/nodejs/infra/repositories/NominationRepository';
 import { MemberRepository } from '/opt/nodejs/infra/repositories/MemberRepository';
+import { EmailMembersRepository } from '/opt/nodejs/infra/repositories/EmailMembersRepository';
 
 export class NominatePeerUseCase implements UseCase<NominatePeerDto, Nomination> {
   constructor(
     private nominationRepository: NominationRepository,
-    private memberRepository: MemberRepository
+    private memberRepository: MemberRepository,
+    private emailMembersRepository: EmailMembersRepository
   ) {}
 
   async execute(req: NominatePeerDto): Promise<Nomination> {
@@ -27,6 +29,15 @@ export class NominatePeerUseCase implements UseCase<NominatePeerDto, Nomination>
     });
 
     const nominationStored = await this.nominationRepository.create(nomination);
+
+    if (nominationStored.isRejected()) {
+      const messageId = await this.emailMembersRepository.sendRejectedNominationEmails(
+        referringMember!.email,
+        nominationStored.email
+      );
+      console.log('MessageId: ', messageId);
+    }
+
     return nominationStored;
   }
 }

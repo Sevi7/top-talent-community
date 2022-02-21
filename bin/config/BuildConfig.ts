@@ -4,5 +4,6 @@ export interface BuildConfig {
     JWT_TOKEN_KEY: string;
     DYNAMO_TABLE_NAME_MEMBERS: string;
     DYNAMO_TABLE_NAME_NOMINATIONS: string;
+    SOURCE_EMAIL: string;
   };
 }

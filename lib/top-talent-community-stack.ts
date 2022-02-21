@@ -37,6 +37,7 @@ export default class TopTalentCommunityStack extends Stack {
         JWT_TOKEN_KEY: buildConfig.Parameters.JWT_TOKEN_KEY,
         DYNAMO_TABLE_NAME_MEMBERS: buildConfig.Parameters.DYNAMO_TABLE_NAME_MEMBERS,
         DYNAMO_TABLE_NAME_NOMINATIONS: buildConfig.Parameters.DYNAMO_TABLE_NAME_NOMINATIONS,
+        SOURCE_EMAIL: buildConfig.Parameters.SOURCE_EMAIL,
       },
     });
     membersTable.grantReadData(nominatePeerLambda);

@@ -12,9 +12,9 @@ An API for top talent community members to nominate their peers.
 - Install dependencies in root folder and in `src/layer/nodejs` folder.
 
 ### Testing Locally
-- Run the following command to create a docker network, run a local dynamodb container in it, create the DynamoDB tables and add some items:
+- Run the following command to create a docker network, run a local DynamoDB container in it, create the DynamoDB tables and add some items, and run a local AWS Simple Email Service:
   ```
-  sh initialize-docker-dynamodb.sh
+  sh initialize-docker-images.sh
   ```
 - Compile TypeScript files
   ```
@@ -27,14 +27,22 @@ An API for top talent community members to nominate their peers.
 - Use AWS SAM CLI for testing locally the resources of the CloudFormation template generated.
   - To invoke the lambda function locally (you can use a different event by replacing the file path after `-e`):
     ```
-    sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerValid.json --docker-network top-talent-community-network | jq
+    sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerRejected.json --docker-network top-talent-community-network | jq
     ```
   - To debug the lambda function locally:
     - Run the following command:
       ```
-      sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerValid.json  --debug-port 5858 --docker-network top-talent-community-network
+      sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerRejected.json  --debug-port 5858 --docker-network top-talent-community-network
       ```
     - Go to VSCode section __Run and Debug__ and select `Attach to SAM nominatePeer`
+- To see the logs of the emails sent:
+  ```
+  docker logs -f aws-ses-local 
+  ```
+- To open an email (replace the file path with the one showed in the logs):
+  ```
+  docker exec -t -i aws-ses-local cat output/2022-02-21/03.22.43.40/body.txt 
+  ```
 
 ### Deployment in AWS (not needed)
   - The first time you need to bootstrap your AWS environment

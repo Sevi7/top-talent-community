@@ -42,3 +42,4 @@ aws dynamodb put-item \
         "city": {"S": "Valencia"},
         "country": {"S": "Spain"}
       }'
+docker run -d --network top-talent-community-network --network-alias=aws-ses-local --name aws-ses-local -p 9001:9001 jdelibas/aws-ses-local

@@ -2,5 +2,5 @@
   "headers": {
     "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI0YzRkZTE4OC0yY2YwLTQ4OGQtYTM2OS05OGZlNDJiZjMzN2IiLCJleHBpcmF0aW9uRGF0ZSI6MTA0MTM3OTIwMDAwMDB9.LNKeFzQU-0lUvYkTdDOacQN-HNDkpU9_-ntIKNjSZpI"
   },
-  "body":"{\"email\":\"sheila@roberts.com\",\"description\":\"Very hard-working person\",\"communityInvolvementScore\":8,\"overallScore\":8.5}"
+  "body":"{\"email\":\"marc@pausen.com\",\"description\":\"Very intelligent person\",\"communityInvolvementScore\":6,\"overallScore\":7}"
 }
