@@ -1,6 +1,8 @@
 import { Construct, Stack, StackProps, Duration } from '@aws-cdk/core';
 import { Function, LayerVersion, Runtime, Code } from '@aws-cdk/aws-lambda';
 import { Table, AttributeType } from '@aws-cdk/aws-dynamodb';
+import { HttpApi, HttpMethod } from '@aws-cdk/aws-apigatewayv2';
+import { HttpLambdaIntegration } from '@aws-cdk/aws-apigatewayv2-integrations';
 import { BuildConfig } from '../bin/config/BuildConfig';
 
 export default class TopTalentCommunityStack extends Stack {
@@ -65,5 +67,31 @@ export default class TopTalentCommunityStack extends Stack {
     });
 
     nominationsTable.grantReadData(listNominationsLambda);
+
+    // ------------------------------------- API GATEWAY -------------------------------------
+
+    const topTalentCommunityAPI = new HttpApi(this, 'topTalentCommunityApi');
+
+    const nominatePeerLambdaIntegration = new HttpLambdaIntegration(
+      'nominatePeerLambdaIntegration',
+      nominatePeerLambda
+    );
+
+    topTalentCommunityAPI.addRoutes({
+      path: '/nominations',
+      methods: [HttpMethod.POST],
+      integration: nominatePeerLambdaIntegration,
+    });
+
+    const listNominationsLambdaIntegration = new HttpLambdaIntegration(
+      'listNominationsLambdaIntegration',
+      listNominationsLambda
+    );
+
+    topTalentCommunityAPI.addRoutes({
+      path: '/nominations',
+      methods: [HttpMethod.GET],
+      integration: listNominationsLambdaIntegration,
+    });
   }
 }

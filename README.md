@@ -46,6 +46,10 @@ An API for top talent community members to nominate their peers.
   ```
   docker exec -t -i aws-ses-local cat output/2022-02-21/03.22.43.40/body.txt 
   ```
+- To create a local HTTP server that hosts all the lambda functions:
+    ```
+    sam local start-api --warm-containers EAGER --docker-network top-talent-community-network
+    ```
 
 ### Deployment in AWS (not needed)
   - The first time you need to bootstrap your AWS environment
