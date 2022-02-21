@@ -7,10 +7,7 @@ export default class TopTalentCommunityStack extends Stack {
   constructor(scope: Construct, id: string, props: StackProps, buildConfig: BuildConfig) {
     super(scope, id, props);
 
-    const layer = new LayerVersion(this, 'layer', {
-      code: Code.fromAsset('dist/src/layer'),
-      compatibleRuntimes: [Runtime.NODEJS_14_X],
-    });
+    // ----------------------------------- DYNAMODB TABLES -----------------------------------
 
     const membersTable = new Table(this, 'membersTable', {
       tableName: buildConfig.Parameters.DYNAMO_TABLE_NAME_MEMBERS,
@@ -26,6 +23,14 @@ export default class TopTalentCommunityStack extends Stack {
       partitionKey: { name: 'id', type: AttributeType.STRING },
     });
 
+    // ---------------------------------------- LAMBDA ----------------------------------------
+
+    const layer = new LayerVersion(this, 'layer', {
+      code: Code.fromAsset('dist/src/layer'),
+      compatibleRuntimes: [Runtime.NODEJS_14_X],
+    });
+
+    // ------------------------------------ NOMINATE PEER ------------------------------------
     const nominatePeerLambda = new Function(this, 'nominatePeer', {
       functionName: 'nominatePeer',
       handler: 'index.lambdaHandler',
@@ -40,7 +45,25 @@ export default class TopTalentCommunityStack extends Stack {
         SOURCE_EMAIL: buildConfig.Parameters.SOURCE_EMAIL,
       },
     });
+
     membersTable.grantReadData(nominatePeerLambda);
     nominationsTable.grantReadWriteData(nominatePeerLambda);
+
+    // ------------------------------------ LIST NOMINATIONS ------------------------------------
+
+    const listNominationsLambda = new Function(this, 'listNominations', {
+      functionName: 'listNominations',
+      handler: 'index.lambdaHandler',
+      runtime: Runtime.NODEJS_14_X,
+      layers: [layer],
+      code: Code.fromAsset('dist/src/functions/listNominations'),
+      timeout: Duration.seconds(15),
+      environment: {
+        JWT_TOKEN_KEY: buildConfig.Parameters.JWT_TOKEN_KEY,
+        DYNAMO_TABLE_NAME_NOMINATIONS: buildConfig.Parameters.DYNAMO_TABLE_NAME_NOMINATIONS,
+      },
+    });
+
+    nominationsTable.grantReadData(listNominationsLambda);
   }
 }

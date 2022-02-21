@@ -29,6 +29,9 @@ An API for top talent community members to nominate their peers.
     ```
     sam local invoke nominatePeer -e tests/mocks/events/nominatePeer/nominatePeerRejected.json --docker-network top-talent-community-network | jq
     ```
+    ```
+    sam local invoke listNominations -e tests/mocks/events/listNominations/listNominationsAdmin.json --docker-network top-talent-community-network | jq
+    ```
   - To debug the lambda function locally:
     - Run the following command:
       ```

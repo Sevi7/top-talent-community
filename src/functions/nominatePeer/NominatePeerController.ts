@@ -18,7 +18,7 @@ export class NominatePeerController extends LambdaBaseController {
     if (!authHeader) {
       return this.unauthorized();
     }
-    const userId = validateJwtToken(authHeader);
+    const { userId } = validateJwtToken(authHeader);
 
     const body = event.body ? JSON.parse(event.body) : {};
     const { error: validationError, value } = nominatePeerConstraints.validate(body);

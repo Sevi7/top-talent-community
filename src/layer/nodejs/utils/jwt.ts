@@ -7,7 +7,12 @@ const { JWT_TOKEN_KEY } = <
   }
 >process.env;
 
-export const validateJwtToken = (authHeader: string): string => {
+export interface JwtPayload {
+  userId: string;
+  isAdmin: boolean;
+}
+
+export const validateJwtToken = (authHeader: string): JwtPayload => {
   let payload;
   try {
     const token = authHeader.substring(7);
@@ -20,5 +25,7 @@ export const validateJwtToken = (authHeader: string): string => {
     throw new JwtTokenError(JwtTokenErrorCode.TokenExpired);
   }
 
-  return payload.userId;
+  const isAdmin = payload.isAdmin === true;
+
+  return { userId: payload.userId, isAdmin };
 };

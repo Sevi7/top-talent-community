@@ -14,5 +14,19 @@
         "<node_internals>/**/*"
       ],
     },
+    {
+      "name": "Attach to SAM listNominations",
+      "type": "node",
+      "port": 5858,
+      "address": "localhost",
+      "request": "attach",
+      "localRoot": "${workspaceFolder}/dist/src/functions/listNominations",
+      "remoteRoot": "/var/task",
+      "protocol": "inspector",
+      "stopOnEntry": false,
+      "skipFiles": [
+        "<node_internals>/**/*"
+      ],
+    },
   ],
 }

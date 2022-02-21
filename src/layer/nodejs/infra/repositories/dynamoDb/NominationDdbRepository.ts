@@ -40,4 +40,10 @@ export class NominationDdbRepository implements NominationRepository {
     const nomination = nominationFactoryFromDb.buildNomination(nominationDb);
     return nomination;
   }
+
+  async getAll(): Promise<Nomination[]> {
+    const nominationsDb = await this.ddbService.scan({ TableName: DYNAMO_TABLE_NAME_NOMINATIONS });
+    const nominations = nominationsDb.map(nominationFactoryFromDb.buildNomination);
+    return nominations;
+  }
 }

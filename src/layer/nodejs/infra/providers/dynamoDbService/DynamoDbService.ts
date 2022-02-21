@@ -31,4 +31,13 @@ export class DynamoDbService implements DbService {
       throw new DynamoDbError(error, params);
     }
   }
+
+  async scan(params: DocumentClient.ScanInput): Promise<any> {
+    try {
+      const scanRes = await this.ddbClient.scan(params).promise();
+      return scanRes.Items;
+    } catch (error: unknown) {
+      throw new DynamoDbError(error, params);
+    }
+  }
 }
